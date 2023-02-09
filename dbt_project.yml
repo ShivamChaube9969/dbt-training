@@ -31,6 +31,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/ directory
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
+
+vars:
+  custid: '50'
+
 models:
   dbt_training:
     # Applies to all files under models/example/
@@ -39,3 +43,20 @@ models:
     
     jaffle_shop:
       materialized: view
+
+version: 2
+
+seeds:
+  - name: raw_payments
+    description: "payment information for orders"
+    docs: 
+      show: true
+    config:
+      enabled: true
+      tags: "daily"
+      database: ANALYTICS
+      schema: Seed_Data
+      alias: raw_payments_seed
+      full_refresh: true
+      column_types: {id: varchar}
+

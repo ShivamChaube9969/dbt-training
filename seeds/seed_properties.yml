@@ -1,0 +1,15 @@
+version : 2
+
+seeds:
+  - name: raw_payments
+    description: "payments data for jaffle_shop"
+    docs:
+      show: true
+    config:
+      schema: seed_objects
+      column_types : {id:varchar}
+  - name: divisions
+    config:
+      database : QWT_Analytics
+      schema: Staging
+  
