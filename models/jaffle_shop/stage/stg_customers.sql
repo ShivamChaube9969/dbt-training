@@ -5,3 +5,5 @@ select
     last_name
 
 from raw.jaffle_shop.customers
+
+where customer_id > {{ var('custid','20')}}
