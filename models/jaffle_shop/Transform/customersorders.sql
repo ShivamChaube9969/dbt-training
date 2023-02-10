@@ -1,4 +1,5 @@
-{{ config (materialized = 'table', schema = 'Transform', sql_header = "alter set session timezone = 'Asia/Kolkata';")}}
+{{ config (materialized = 'table', schema = 'Transform')}}
+-- , sql_header = "alter set session timezone = 'Asia/Kolkata';"
 with customers as (
 
 select * from {{ ref('stg_customers') }}

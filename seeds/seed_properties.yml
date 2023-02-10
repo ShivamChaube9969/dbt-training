@@ -2,14 +2,30 @@ version : 2
 
 seeds:
   - name: raw_payments
-    description: "payments data for jaffle_shop"
-    docs:
+    description: "payment information for orders"
+    docs: 
       show: true
     config:
-      schema: seed_objects
-      column_types : {id:varchar}
+      enabled: true
+      tags: "daily"
+      database: ANALYTICS
+      schema: Seed_Data
+      alias: raw_payments_seed
+      full_refresh: true
+      column_types: {id: varchar}
+    columns:
+      - name: amount
+        tests:
+          - is_even
+  - name: Categories
+    config:
+      enabled: true
+      database: QWT_Analytics
+      schema: Staging
+      full_refresh: true
   - name: divisions
     config:
-      database : QWT_Analytics
+      enabled: true
+      database: QWT_Analytics
       schema: Staging
-  
+      full_refresh: true
