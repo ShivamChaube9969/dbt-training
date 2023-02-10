@@ -6,7 +6,7 @@ with
     categories as (select * from {{ ref("Categories") }}),
 
     suppliers as (select * from {{ ref("qwt_stg_suppliers") }}),
-    
+
     final as (
 
         select
