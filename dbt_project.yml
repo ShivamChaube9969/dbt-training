@@ -36,27 +36,7 @@ vars:
   custid: '50'
 
 models:
-  dbt_training:
-    # Applies to all files under models/example/
-    example:
-      materialized: table
-    
-    jaffle_shop:
-      materialized: view
-
-version: 2
-
-seeds:
-  - name: raw_payments
-    description: "payment information for orders"
-    docs: 
-      show: true
-    config:
-      enabled: true
-      tags: "daily"
-      database: ANALYTICS
-      schema: Seed_Data
-      alias: raw_payments_seed
-      full_refresh: true
-      column_types: {id: varchar}
-
+  jaffle_shop:
+    +pre-hook : insert into ANALYTICS.Audit.audit_logs (execution_start_time, execution_end_time, object_name) values (current_timestamp(), null , '{{ this}}')
+  QWT:
+    +pre-hook : insert into QWT_ANALYTICS.Audit.audit_logs (execution_start_time, execution_end_time, object_name) values (current_timestamp(), null , '{{ this}}')
