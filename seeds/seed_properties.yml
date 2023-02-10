@@ -29,3 +29,11 @@ seeds:
       database: QWT_Analytics
       schema: Staging
       full_refresh: true
+  - name: shippers
+    description: "Shippers seed file data"
+    docs:
+    show: true
+   config:
+     database: QWT_ANALYTICS
+     alias: STG_QWT_Shippers
+     schema: Staging
